@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarks Casino</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        header h1, nav h2, footer {
+            margin: 0;
+            padding: 10px 0;
+        }
+        nav a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quarks Casino</h1>
+    </header>
+
+    <nav>
+        <h2>Navigation</h2>
+        <a href="./index.html">Home</a>
+        <a href="./boards.html">Boards</a>
+        <a href="./game.html">Game</a>
+        <a href="./meme-mover.html">Meme Mover</a>
+        <a href="./palindrome.html">Palindrome Checker</a>
+    </nav>
+
+    <main>
+        <h1>Welcome to Quarks Casino</h1>
+        <button id="playButton">Play Craps</button>
+        <div id="result"></div>
+
+        <script>
+            document.getElementById('playButton').addEventListener('click', function() {
+                const roll1 = Math.floor(Math.random() * 6) + 1;
+                const roll2 = Math.floor(Math.random() * 6) + 1;
+                const sum = roll1 + roll2;
+                const result = document.getElementById('result');
+
+                if (sum === 7 || sum === 11) {
+                    result.textContent = `You rolled ${roll1} + ${roll2} = ${sum}. You win!`;
+                } else {
+                    result.textContent = `You rolled ${roll1} + ${roll2} = ${sum}. You lose.`;
+                }
+            });
+        </script>
+    </main>
+
+    <footer>
+        Jennifer Schumacher<br>
+        University of Advancing Technology<br>
+        2625 W Baseline Rd<br>
+        Tempe, AZ 85283<br>
+    </footer>
+</body>
+</html>

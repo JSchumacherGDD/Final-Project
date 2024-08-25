@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker & Secret Message</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        header h1, nav h2, footer {
+            margin: 0;
+            padding: 10px 0;
+        }
+        nav a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        .result {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .secret-message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #32CD32;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Palindrome Checker & Secret Message Validator</h1>
+    </header>
+
+    <nav>
+        <h2>Navigation</h2>
+        <a href="./index.html">Home</a>
+        <a href="./boards.html">Boards</a>
+        <a href="./game.html">Game</a>
+        <a href="./meme-mover.html">Meme Mover</a>
+        <a href="./palindrome.html">Palindrome Checker</a>
+    </nav>
+
+    <main>
+        <div class="input-container">
+            <form id="userForm">
+                <input type="text" id="firstName" placeholder="First Name">
+                <input type="text" id="lastName" placeholder="Last Name">
+                <input type="text" id="zipCode" placeholder="Zip Code">
+                <input type="text" id="userInput" placeholder="Enter a word or phrase">
+                <button type="button" onclick="validateInputs()">Submit</button>
+            </form>
+        </div>
+        <div class="result" id="result"></div>
+        <div class="buttons">
+            <button onclick="resetInput()">Try Another</button>
+        </div>
+        <img src="https://i.ibb.co/dkyZrTJ/kayak-fishing-paddle-paddling-outdoor-recreation-aruba-6cf9c59ebc04c325678edfebd18e861a.png" alt="Palindrome Image" width="300">
+        <div class="secret-message hidden" id="secretMessage">
+            You've found a secret! Kayak is a Palindrome!
+        </div>
+        <audio controls autoplay loop>
+            <source src="Water_Churning.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <script>
+            function checkPalindrome() {
+                const input = document.getElementById('userInput').value;
+                const cleanedInput = input.replace(/\s+/g, '').toLowerCase();
+                const reversedInput = cleanedInput.split('').reverse().join('');
+                if (cleanedInput === reversedInput) {
+                    document.getElementById('result').innerText = `"${input}" is a palindrome!`;
+                } else {
+                    document.getElementById('result').innerText = `"${input}" is not a palindrome.`;
+                }
+            }
+
+            function validateInputs() {
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const zipCode = document.getElementById('zipCode').value;
+                const fullName = `${firstName} ${lastName}`;
+
+                if (fullName.length > 20) {
+                    alert('Full name must be 20 characters or less.');
+                    return;
+                }
+
+                if (!/^\d{5}$/.test(zipCode)) {
+                    alert('Zip code must be exactly 5 digits.');
+                    return;
+                }
+
+                document.getElementById('secretMessage').classList.remove('hidden');
+                checkPalindrome();
+            }
+
+            function resetInput() {
+                document.getElementById('firstName').value = '';
+                document.getElementById('lastName').value = '';
+                document.getElementById('zipCode').value = '';
+                document.getElementById('userInput').value = '';
+                document.getElementById('result').innerText = '';
+                document.getElementById('secretMessage').classList.add('hidden');
+            }
+        </script>
+    </main>
+
+    <footer>
+        Jennifer Schumacher<br>
+        University of Advancing Technology<br>
+        2625 W Baseline Rd<br>
+        Tempe, AZ 85283<br>
+    </footer>
+</body>
+</html>
